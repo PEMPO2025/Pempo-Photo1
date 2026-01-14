@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Educativo | Gold & Graphite Editorial</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --graphite-dark: #1A1A1A;
+            --neutral-white: #FFFFFF;
+            --accent-gold: #C59345;
+            --ash-grey: #333333;
+            --muted-gold: #A67C37;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--graphite-dark);
+            color: var(--neutral-white);
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        .label {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-gold);
+            font-size: 0.9em;
+        }
+
+        /* Header */
+        .main-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--ash-grey);
+        }
+
+        .main-header h1 {
+            color: var(--accent-gold);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--ash-grey);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeSlideIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .card.wide {
+            grid-column: span 2;
+        }
+
+        .card.tall {
+            grid-row: span 2;
+        }
+
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .accent-strip {
+            height: 4px;
+            background-color: var(--accent-gold);
+        }
+
+        /* Progress */
+        .progress-bar-container {
+            background-color: var(--graphite-dark);
+            height: 8px;
+            margin-top: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent-gold);
+        }
+
+        .progress-text {
+            font-size: 0.85em;
+            text-align: right;
+            color: var(--muted-gold);
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--graphite-dark);
+        }
+
+        .btn.solid {
+            background-color: var(--accent-gold);
+            color: var(--graphite-dark);
+            border: none;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <h1>Dashboard de Estudiante</h1>
+    <p>Tu progreso en un vistazo</p>
+</header>
+
+<main class="dashboard-container">
+
+    <section class="card wide">
+        <h2>Progreso General</h2>
+        <span class="label">Métricas clave</span>
+        <p><strong>Cursos completados:</strong> 3/5</p>
+        <p><strong>Promedio:</strong> 92%</p>
+        <p><strong>Horas esta semana:</strong> 12h 45min</p>
+        <div class="accent-strip"></div>
+    </section>
+
+    <section class="card tall">
+        <h2>Cursos Activos</h2>
+        <span class="label">Aprendizaje</span>
+
+        <p><strong>Firebase</strong></p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width:75%"></div>
+        </div>
+        <div class="progress-text">75%</div>
+
+        <p><strong>Web Avanzado</strong></p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width:40%"></div>
+        </div>
+        <div class="progress-text">40%</div>
+    </section>
+
+    <section class="card">
+        <h2>Acciones</h2>
+        <span class="label">Rápidas</span>
+        <div class="button-group">
+            <a class="btn solid" href="#">Clases</a>
+            <a class="btn" href="#">Tareas</a>
+            <a class="btn" href="#">Notas</a>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
